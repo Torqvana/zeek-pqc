@@ -48,4 +48,4 @@ The script identifies the following algorithms based on current protocol drafts 
 ### Using zkg
 Install this package via the Zeek Package Manager:
 ```bash
-zkg install <your-github-repo-url>
+zkg install https://github.com/Torqvana/zeek-pqc/

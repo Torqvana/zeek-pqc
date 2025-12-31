@@ -2,10 +2,6 @@
 description = Detection of Post-Quantum Cryptography (PQC) in SSL and SSH.
 alias = zeek-pqc pqc
 tags = pqc discovery, pqc transition, key exchange, ssh, ssl
-user = pitfallincode
+script_dir = scripts
 depends = zeek >=8.0.3
-version = 1.0.0
 credits = Torqvana
-
-[scripts]
-main = scripts

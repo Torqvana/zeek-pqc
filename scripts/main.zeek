@@ -47,8 +47,8 @@ event ssl_extension_key_share(c: connection, is_client: bool, curves: index_vec)
         if ( |pqc_val| > 0 )
             {
                 pqc_host = is_client ? c$id$orig_h : c$id$resp_h;
-                local rec: Pqc::Info = [$uid=c$uid, $host=pqc_host, $is_client=is_client, $is_hybrid=is_hybrid, $service="ssl", $pqc_algs=pqc_val];
-                Log::write(Pqc::LOG, rec);
+                local rec: PQC::Info = [$uid=c$uid, $host=pqc_host, $is_client=is_client, $is_hybrid=is_hybrid, $service="ssl", $pqc_algs=pqc_val];
+                Log::write(PQC::LOG, rec);
             }
     }
 # Use ssl established event to determine if PQC algorithms were selected during the negociation
@@ -118,5 +118,6 @@ event ssh_capabilities(c: connection, cookie: string, capabilities: SSH::Capabil
 
 event zeek_init()
     {
-        Log::create_stream(Pqc::LOG, [$columns=Info, $path="pqc"]);
+        Log::create_stream(PQC::LOG, [$columns=Info, $path="pqc"]);
+
     }

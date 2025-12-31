@@ -99,8 +99,8 @@ event ssh_capabilities(c: connection, cookie: string, capabilities: SSH::Capabil
         if ( |pqc_val| > 0 && capabilities?$is_server )
             {
                 pqc_host = capabilities$is_server ? c$id$resp_h : c$id$orig_h;
-                local rec: Pqc::Info = [$uid=c$uid, $host=pqc_host, $is_client=!capabilities$is_server, $is_hybrid=is_hybrid, $service="ssh", $pqc_algs=pqc_val];
-                Log::write(Pqc::LOG, rec);
+                local rec: PQC::Info = [$uid=c$uid, $host=pqc_host, $is_client=!capabilities$is_server, $is_hybrid=is_hybrid, $service="ssh", $pqc_algs=pqc_val];
+                Log::write(PQC::LOG, rec);
             }
         if ( c?$ssh && c$ssh?$kex_alg )
             {
@@ -121,3 +121,4 @@ event zeek_init()
         Log::create_stream(PQC::LOG, [$columns=Info, $path="pqc"]);
 
     }
+
